@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:test_project/Modules/Transactions/widgets/amount_selector.dart';
 import 'package:test_project/Modules/Transactions/widgets/master_card.dart';
+import 'package:test_project/Modules/Transactions/widgets/receiver_card.dart';
 import 'package:test_project/Utils/color_codes.dart';
 import 'package:test_project/Utils/utils.dart';
 
@@ -12,6 +14,9 @@ class TransferMoneyScreen extends StatefulWidget {
 }
 
 class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
+  double amountToTransfer=0.0;
+  double min = 0.0;
+  double max = 400;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,19 +45,8 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
           child: Column(
             children: [
               headerWidget(),
-              SizedBox(height: 15,),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  decoration:const BoxDecoration(
-                    color: ColorCodes.WHITE_COLOR,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(35),
-                      topLeft: Radius.circular(35)
-                    )
-                  ),
-                ),
-              )
+              const SizedBox(height: 15,),
+              bodyContent()
             ],
           ),
         ),
@@ -77,6 +71,115 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  bodyContent(){
+    return Expanded(
+      flex: 2,
+      child: Container(
+        padding:const  EdgeInsets.symmetric(horizontal: 15,vertical: 12),
+        decoration:const BoxDecoration(
+            color: ColorCodes.WHITE_COLOR,
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(35),
+                topLeft: Radius.circular(35)
+            )
+        ),
+        child: Column(
+          children: [
+            const SizedBox(height: 12,),
+           const Text("RECEIVER CARD NUMBER",
+              style: TextStyle(
+              fontSize: 15,
+              color: ColorCodes.BLACK_COLOR,
+              fontWeight: FontWeight.w600,
+            ),),
+            const SizedBox(height: 12,),
+            const ReceiverCard(),
+           const SizedBox(height: 25,),
+            const Text("AMOUNT TO TRANSFER",
+              style: TextStyle(
+                fontSize: 15,
+                color: ColorCodes.BLACK_COLOR,
+                fontWeight: FontWeight.w600,
+              ),),
+            const SizedBox(height: 15,),
+            Text("\$ $amountToTransfer",style:const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 32,
+            ),),
+            const SizedBox(height: 15,),
+            sliderWidget(),
+            const SizedBox(height: 15,),
+            AmountSelector(
+                min: min,
+                max: max,
+                division: 8,
+                onChange: (val){
+                  setState(() {
+                    amountToTransfer = val;
+                  });
+                }
+            ),
+            const Spacer(),
+            SizedBox(
+              height: 60,
+              width: double.maxFinite,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  primary: ColorCodes.PEACH_COLOR.withOpacity(0.8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25)
+                  )
+                ),
+                  onPressed: (){},
+                  child: Text("Transfer  \$$amountToTransfer",
+                  style: const TextStyle(
+                    color: ColorCodes.BLACK_COLOR,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold
+                  ),)
+              ),
+            ),
+            const SizedBox(height: 20,)
+
+          ],
+        ),
+      ),
+    );
+  }
+
+  sliderWidget(){
+    return Column(
+      children: [
+        Slider(
+            value: amountToTransfer,
+            min: min,
+            max: max,
+            divisions: 8,
+            activeColor: ColorCodes.PINK_COLOR,
+            thumbColor: ColorCodes.PINK_COLOR,
+            onChanged: (val) {
+              setState(() {
+                amountToTransfer = val;
+              });
+            }
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("\$ $min",style: TextStyle(
+              color: ColorCodes.BLACK_COLOR.withOpacity(0.5)
+            ),),
+            Text("\$ $max",style: TextStyle(
+                color: ColorCodes.BLACK_COLOR.withOpacity(0.5)
+            )
+            )
+          ],
+        )
+      ],
     );
   }
 }
