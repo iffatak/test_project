@@ -49,20 +49,29 @@ class MasterCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height:30,),
+          const SizedBox(height:30,),
           const Text("5255 3214 8271 9082",style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w600,
               color: ColorCodes.WHITE_COLOR,
             letterSpacing: 2
           ),),
-          SizedBox(height:30,),
+          const SizedBox(height:30,),
 
-          Text("07/12",style: TextStyle(
-              fontSize: 19,
-              fontWeight: FontWeight.bold,
-              color: ColorCodes.WHITE_COLOR.withOpacity(0.6)
-          ),)
+          Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: Text("07/12",style: TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
+                    color: ColorCodes.WHITE_COLOR.withOpacity(0.6)
+                ),),
+              ),
+
+              Expanded(child: Image.asset("assets/masterCard.png",height: 25,width: 25,))
+            ],
+          )
         ],
       ),
     );

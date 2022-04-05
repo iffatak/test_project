@@ -15,12 +15,21 @@ class DebitCardWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
-         const Text("Current Balance",
-            style: TextStyle(
-            fontSize: 15,
-            color: ColorCodes.BLACK_COLOR,
-            fontWeight: FontWeight.w400
-          ),),
+          Row(
+            children:  [
+              const Expanded(
+                flex: 4,
+                child:  Text("Current Balance",
+                  style: TextStyle(
+                  fontSize: 15,
+                  color: ColorCodes.BLACK_COLOR,
+                  fontWeight: FontWeight.w400
+                ),),
+              ),
+
+              Expanded(child: Image.asset("assets/masterCard.png",height: 25,width: 25,))
+            ],
+          ),
          const SizedBox(height: 10,),
           const Text("\$5,750,20",
             style: TextStyle(
