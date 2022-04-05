@@ -13,7 +13,7 @@ class MasterCard extends StatelessWidget {
     return Container(
       height: cardHeight,
       width: Utils.getScreenWidth(context),
-      margin: const EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 12),
       decoration: BoxDecoration(borderRadius: radius),
       child: Stack(
         children: [
@@ -45,7 +45,7 @@ class MasterCard extends StatelessWidget {
 
   bodyContent() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+      padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

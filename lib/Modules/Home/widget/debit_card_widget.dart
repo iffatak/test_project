@@ -7,7 +7,7 @@ class DebitCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
         color: ColorCodes.WHITE_COLOR

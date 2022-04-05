@@ -18,7 +18,7 @@ class ServiceCard extends StatelessWidget {
       child: Container(
         height: 150,
         width: 110,
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 12),
         padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),

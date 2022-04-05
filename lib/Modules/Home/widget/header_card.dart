@@ -19,7 +19,7 @@ class _HeaderCardState extends State<HeaderCard> {
     return Container(
       height: cardHeight,
       width: Utils.getScreenWidth(context),
-      margin: const EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 12),
       decoration: BoxDecoration(borderRadius: radius),
       child: Stack(
         children: [
@@ -51,7 +51,7 @@ class _HeaderCardState extends State<HeaderCard> {
 
   bodyContent() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+      padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
       child: Column(
         children: [
           heading(),
@@ -83,7 +83,7 @@ class _HeaderCardState extends State<HeaderCard> {
                   width: 8.0,
                   height: 8.0,
                   margin:
-                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                  const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: currentPos == index
